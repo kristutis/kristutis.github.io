@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>New record form</title>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <style>
+    h1,
+    h4 {
+      text-align: center;
+      color: #4CAF50;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    input[type=number] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+    }
+
+    input[type=text],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+    }
+
+    input[type=submit] {
+      width: 170px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+    .container {
+      margin: auto;
+      width: 50%;
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .button {
+      width: 170px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+
+    let usersCount=localStorage.getItem("importedUsers");
+
+    let users = [];
+
+    const addUser = (ev) => {
+      usersCount++;
+      ev.preventDefault();  //to stop the form submitting
+      let user = {
+        userId: document.getElementById('userId').value,
+        id: usersCount,
+        title: document.getElementById('title').value,
+        body: document.getElementById('body').value
+      }
+      users.push(user);
+      document.forms[0].reset(); // to clear the form for the next entries
+      
+      //document.querySelector('form').reset();
+      //for display purposes only
+      
+      console.warn('added', { users });
+      // let pre = document.querySelector('#msg pre');
+      // pre.textContent = '\n' + JSON.stringify(users, '\t', 2);
+      //saving to localStorage
+      
+      localStorage.setItem('MyuserList', JSON.stringify(users));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('btn').addEventListener('click', addUser);
+    });
+
+  </script>
+
+  <h1>Made by Kristijonas Karalaitis</h1>
+  <h4>kristijonas.karalaitis@gmail.com</h4>
+
+  <div class="container">
+    <!-- <form action="/action_page.php">  -->
+    <form>
+      <label for="userId">User ID</label>
+      <input type="number" id="userId" placeholder="User's ID">
+
+      <label for="id">Title</label>
+      <input type="text" id="title" placeholder="User's title">
+
+      <label for="body">Body</label>
+      <textarea id="body" placeholder="Write something.." style="height:200px"></textarea>
+
+      <input id="btn" type="submit" value="Submit new user">
+
+      
+    </form>
+
+    <div style="height:5px"></div>
+
+    <button onclick="window.location.href='index.html'" class="button">Back to main page</button>
+  </div>
+
+</body>
+
+</html>
