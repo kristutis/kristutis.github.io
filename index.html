@@ -58,6 +58,25 @@
     margin: 0;
   }
 
+  .button2 {
+    background-color: #f4511e;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .button2:hover {
+    opacity: 1
+  }
+
   #users {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -94,8 +113,18 @@
     cursor: pointer;
   }
 </style>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- "//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" kai hostinu -->
 <script>
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('btn').addEventListener('click', buttonClicked);
+  });
+
+  function buttonClicked() {
+    localStorage.clear();
+    location.reload();
+  }
 
   let jsonUsers = 0;
 
@@ -104,27 +133,30 @@
       .then(data => data.json())
       .then(data => loadTableData(data))
 
-    let newObjects = localStorage.getItem("MyuserList");
-    if (!(newObjects == null || newObjects == "null")) {
-      addUsersFromLocal(JSON.parse(newObjects))
-    }
+
   }
 
   function loadTableData(tableData) {
     const tableBody = document.getElementById('tableData');
     let dataHtml = '';
 
-    let iJson = 1;
-
     for (let user of tableData) {
-      dataHtml += `<tr data-href="details.html" data-id=${iJson} ><td>${user.userId}</td><td>${user.id}</td><td>${user.title}</td></tr>`;
-      iJson++;
+      dataHtml += `<tr data-href="details.html" data-id=${user.id} ><td>${user.userId}</td><td>${user.id}</td><td>${user.title}</td></tr>`;
       jsonUsers++;
     }
 
     localStorage.setItem("importedUsers", jsonUsers);
 
+    let newObjects = localStorage.getItem("MyuserList");
+    if (!(newObjects == null || newObjects == "null")) {
+      dataHtml += addUsersFromLocal(JSON.parse(newObjects))
+    }
+    else {
+      document.getElementById("btn").style.display="none";
+    }
+
     tableBody.innerHTML = dataHtml;
+
   }
 
   $(document).ready(function () {
@@ -136,7 +168,7 @@
   });
 
   function addUser(userId, id, title) {
-    console.log(title);
+    // console.log(title);
     document.getElementById('tableData').insertAdjacentHTML("beforeend", `
             <tr data-href="http://www.google.com">
             <td>${userId}</td>
@@ -147,13 +179,17 @@
   }
 
   function addUsersFromLocal(data) {
+    let dataInHtml = '';
 
     for (let user of data) {
-      let dataHTML = '';
-      dataHtml = `<tr data-href="details.html"><td>${user.userId}</td><td>${user.id}</td><td>${user.title}</td></tr>`;
-      console.log(dataHtml);
-      document.getElementById("tableData").insertAdjacentHTML("beforeend", dataHtml.outerHTML);
+      dataInHtml += `<tr data-href="details.html" data-id=${user.id} ><td>${user.userId}</td><td>${user.id}</td><td>${user.title}</td></tr>`;
+      // console.log(dataInHtml);
+      // document.getElementById('tableData').insertAdjacentHTML("beforeend", dataInHtml);     
+      // $("#tableData tbody").append(dataHTML);
+      // $(dataInHtml).appendTo($("tableData"));      
     }
+
+    return dataInHtml;
   }
 
 </script>
@@ -165,6 +201,10 @@
   <p align="center">
     <button onclick="window.location.href='add.html'" class="button" style="vertical-align:middle"><span>Add new
         user</span></button>
+  </p>
+
+  <p align="center">
+    <button id="btn" class="button2" style="vertical-align:middle"><span>Delete new users</span></button>
   </p>
 
   <table id="users">

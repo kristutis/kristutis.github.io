@@ -111,22 +111,36 @@
   <script>
 
     window.onload = () => {
-      let id = localStorage.getItem("wantedID");
-      // let jsonsID = localStorage.getItem("importedUsers");
 
-      // console.log(jsonsID);
+      let id1 = localStorage.getItem("wantedID");
+      let importedCount1 = localStorage.getItem("importedUsers");
+
+      let id = parseInt(id1);
+      let importedCount = parseInt(importedCount1);
+
       // console.log(id);
+      // console.log(importedCount);
 
-      // if (id>=jsonsID) {
-        let jsonURL = `https://jsonplaceholder.typicode.com/posts/${id}`;
+      let jsonURL = `https://jsonplaceholder.typicode.com/posts/${id}`;
 
+      if (id > importedCount) {
+        loadLocalUser(id);
+      } else {
         fetch(jsonURL)
           .then(data => data.json())
           .then(data => loadTableData(data))
-      // }
-      // else {
+      }
 
-      // }
+    }
+
+    function loadLocalUser(id) {
+      let localObjects = JSON.parse(localStorage.getItem("MyuserList"));
+
+      for (let user of localObjects) {
+        if (user.id == id) {
+          loadTableData(user)
+        }
+      }
     }
 
     function loadTableData(data) {

@@ -86,31 +86,46 @@
 
   <script>
 
-    let usersCount=localStorage.getItem("importedUsers");
+    let usersCount = localStorage.getItem("importedUsers");
+
+    let localObjects = JSON.parse(localStorage.getItem("MyuserList"));
 
     let users = [];
+    let totalUsers = 0;
+
+    window.onload = () => {
+      if (localObjects == null || localObjects == "null") {        
+        totalUsers=usersCount;
+        // console.log('tuscia');
+      }
+      else {
+        totalUsers = localStorage.getItem("totalUsers");
+        // console.log('yra');
+        users = localObjects;
+      }
+    }
+
 
     const addUser = (ev) => {
-      usersCount++;
+      totalUsers++;
       ev.preventDefault();  //to stop the form submitting
       let user = {
         userId: document.getElementById('userId').value,
-        id: usersCount,
+        id: totalUsers,
         title: document.getElementById('title').value,
         body: document.getElementById('body').value
       }
       users.push(user);
       document.forms[0].reset(); // to clear the form for the next entries
-      
-      //document.querySelector('form').reset();
-      //for display purposes only
-      
-      console.warn('added', { users });
+
+      // console.warn('added', { users });
+
       // let pre = document.querySelector('#msg pre');
       // pre.textContent = '\n' + JSON.stringify(users, '\t', 2);
-      //saving to localStorage
-      
+      // saving to localStorage
+
       localStorage.setItem('MyuserList', JSON.stringify(users));
+      localStorage.setItem("totalUsers", totalUsers);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -123,7 +138,6 @@
   <h4>kristijonas.karalaitis@gmail.com</h4>
 
   <div class="container">
-    <!-- <form action="/action_page.php">  -->
     <form>
       <label for="userId">User ID</label>
       <input type="number" id="userId" placeholder="User's ID">
@@ -136,7 +150,7 @@
 
       <input id="btn" type="submit" value="Submit new user">
 
-      
+
     </form>
 
     <div style="height:5px"></div>
