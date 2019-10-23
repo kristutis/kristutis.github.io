@@ -1,5 +1,4 @@
-  h1,
-  h4 {
+  h1, h4 {
     text-align: center;
     color: #4CAF50;
   }
@@ -74,8 +73,7 @@
     width: 100%;
   }
 
-  #users td,
-  #users th {
+  #users td, #users th {
     border: 1px solid #ddd;
     padding: 8px;
   }

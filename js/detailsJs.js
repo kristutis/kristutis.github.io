@@ -1,40 +1,40 @@
-    window.onload = () => {
+window.onload = () => {
 
-      let id1 = localStorage.getItem("wantedID");
-      let importedCount1 = localStorage.getItem("importedUsers");
+  let id1 = localStorage.getItem("wantedID");
+  let importedCount1 = localStorage.getItem("importedUsers");
 
-      let id = parseInt(id1);
-      let importedCount = parseInt(importedCount1);
+  let id = parseInt(id1);
+  let importedCount = parseInt(importedCount1);
 
-      // console.log(id);
-      // console.log(importedCount);
+  // console.log(id);
+  // console.log(importedCount);
 
-      let jsonURL = `https://jsonplaceholder.typicode.com/posts/${id}`;
+  let jsonURL = `https://jsonplaceholder.typicode.com/posts/${id}`;
 
-      if (id > importedCount) {
-        loadLocalUser(id);
-      } else {
-        fetch(jsonURL)
-          .then(data => data.json())
-          .then(data => loadTableData(data))
-      }
+  if (id > importedCount) {
+    loadLocalUser(id);
+  } else {
+    fetch(jsonURL)
+      .then(data => data.json())
+      .then(data => loadTableData(data))
+  }
 
+}
+
+function loadLocalUser(id) {
+  let localObjects = JSON.parse(localStorage.getItem("MyuserList"));
+
+  for (let user of localObjects) {
+    if (user.id == id) {
+      loadTableData(user)
     }
+  }
+}
 
-    function loadLocalUser(id) {
-      let localObjects = JSON.parse(localStorage.getItem("MyuserList"));
-
-      for (let user of localObjects) {
-        if (user.id == id) {
-          loadTableData(user)
-        }
-      }
-    }
-
-    function loadTableData(data) {
-      const tableBody = document.getElementById('tableData');
-      // let dataHtml = '';
-      let dataHtml = `<tr>
+function loadTableData(data) {
+  const tableBody = document.getElementById('tableData');
+  // let dataHtml = '';
+  let dataHtml = `<tr>
                     <td><b>User ID:</b></td>
                     <td>${data.userId}</td>
                   </tr>
@@ -51,5 +51,5 @@
                     <td>${data.body}</td>
                   </tr>`;
 
-      tableBody.innerHTML = dataHtml;
-    }
+  tableBody.innerHTML = dataHtml;
+}
