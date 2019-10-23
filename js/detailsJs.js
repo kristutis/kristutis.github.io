@@ -47,7 +47,7 @@
                     <td>${data.title}</td>
                   </tr>
                   <tr>
-                    <td><b>Body</b></td>
+                    <td><b>Body:</b></td>
                     <td>${data.body}</td>
                   </tr>`;
 
