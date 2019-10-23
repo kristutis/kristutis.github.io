@@ -1,0 +1,101 @@
+    h1,
+    h4 {
+      text-align: center;
+      color: #4CAF50;
+    }
+
+    .button {
+      display: inline-block;
+      border-radius: 4px;
+      background-color: #f4511e;
+      border: none;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 28px;
+      padding: 20px;
+      width: 300px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+
+    .button span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+
+    .button:hover span {
+      padding-right: 25px;
+    }
+
+    .button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+
+
+    body {
+      margin: 0;
+    }
+
+    .detailsBottom {
+      height: 200px;
+      text-align: center;
+    }
+
+    /*Using CSS for table*/
+    .demotbl {
+      table-layout: fixed;
+      border: 0px solid #69899F;
+      width: 50%;
+    }
+
+    .demotbl th {
+      font-size: 30px;
+      padding: 5px;
+      color: #fff;
+      text-shadow: 1px 1px 1px #568F23;
+      border-bottom: 3px solid #9ED929;
+      background-color: #9DD929;
+      background: -webkit-gradient(linear,
+          left bottom,
+          left top,
+          color-stop(0.02, rgb(123, 192, 67)),
+          color-stop(0.51, rgb(139, 198, 66)),
+          color-stop(0.87, rgb(158, 217, 41)));
+      background: -moz-linear-gradient(center bottom,
+          rgb(123, 192, 67) 3%,
+          rgb(139, 198, 66) 52%,
+          rgb(158, 217, 41) 88%);
+      -webkit-border-top-left-radius: 5px;
+      -webkit-border-top-right-radius: 5px;
+      -moz-border-radius: 5px 5px 0px 0px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    .demotbl td {
+      word-wrap: break-word;
+      width: 100px;
+      padding: 10px;
+      text-align: center;
+      vertical-align: middle;
+      background-color: #DEF3CA;
+      border: 1px solid #BED3AB;
+      -moz-border-radius: 2px;
+      -webkit-border-radius: 2px;
+      border-radius: 2px;
+      color: #666;
+      text-shadow: 1px 1px 1px #fff;
+    }

@@ -2,198 +2,21 @@
 <html>
 
 <head>
+  <link rel="stylesheet" href="css/addStyle.css" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- "//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" kai hostinu -->
+  <script src="js/addJs.js"></script>
+
   <meta charset="utf-8" />
   <title>New record form</title>
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-  <style>
-    /* Popup container - can be anything you want */
-.popup {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 
-/* The actual popup */
-.popup .popuptext {
-  visibility: hidden;
-  width: 160px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -80px;
-}
-
-/* Popup arrow */
-.popup .popuptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-
-/* Toggle this class - hide and show the popup */
-.popup .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
-}
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {opacity: 0;} 
-  to {opacity: 1;}
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
-}
-    h1,
-    h4 {
-      text-align: center;
-      color: #4CAF50;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    input[type=number] {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      margin-top: 6px;
-      margin-bottom: 16px;
-      resize: vertical;
-    }
-
-    input[type=text],
-    select,
-    textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      margin-top: 6px;
-      margin-bottom: 16px;
-      resize: vertical;
-    }
-
-    input[type=submit] {
-      width: 170px;
-      background-color: #4CAF50;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    input[type=submit]:hover {
-      background-color: #45a049;
-    }
-
-    .container {
-      margin: auto;
-      width: 50%;
-      border-radius: 5px;
-      background-color: #f2f2f2;
-      padding: 20px;
-    }
-
-    .button {
-      width: 170px;
-      background-color: #4CAF50;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .button:hover {
-      background-color: #45a049;
-    }
-  </style>
 </head>
 
 <body>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-
-    let usersCount = localStorage.getItem("importedUsers");
-
-    let localObjects = JSON.parse(localStorage.getItem("MyuserList"));
-
-    let users = [];
-    let totalUsers = 0;
-
-    window.onload = () => {
-      if (localObjects == null || localObjects == "null") {
-        totalUsers = usersCount;
-        // console.log('tuscia');
-      }
-      else {
-        totalUsers = localStorage.getItem("totalUsers");
-        // console.log('yra');
-        users = localObjects;
-      }
-    }
 
 
-    const addUser = (ev) => {
-      totalUsers++;
-      ev.preventDefault();  //to stop the form submitting
-      let user = {
-        userId: document.getElementById('userId').value,
-        id: totalUsers,
-        title: document.getElementById('title').value,
-        body: document.getElementById('body').value
-      }
-      users.push(user);
-      document.forms[0].reset(); // to clear the form for the next entries
-
-      // console.warn('added', { users });
-
-      // let pre = document.querySelector('#msg pre');
-      // pre.textContent = '\n' + JSON.stringify(users, '\t', 2);
-      // saving to localStorage
-
-      localStorage.setItem('MyuserList', JSON.stringify(users));
-      localStorage.setItem("totalUsers", totalUsers);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('btn').addEventListener('click', addUser);
-    });
-
-    function myFunction() {
-      var popup = document.getElementById("myPopup");
-      popup.classList.toggle("show");
-    }
-
-  </script>
 
   <h1>Made by Kristijonas Karalaitis</h1>
   <h4>kristijonas.karalaitis@gmail.com</h4>
@@ -210,9 +33,9 @@
       <textarea id="body" placeholder="Write something.." style="height:200px"></textarea>
 
       <div class="popup">
-      <input onclick="myFunction()" id="btn" type="submit" value="Submit new user">
-      <span class="popuptext" id="myPopup">User added!</span>
-    </div>
+        <input onclick="myFunction()" id="btn" type="submit" value="Submit new user">
+        <span class="popuptext" id="myPopup">User added!</span>
+      </div>
 
 
     </form>
