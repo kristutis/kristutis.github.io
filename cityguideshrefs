@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="css/indexStyle.css" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- "//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" kai hostinu -->
+  <script src="js/indexJs.js"></script>
+
+  <meta charset="utf-8" />
+  <title>List page</title>
+</head>
+
+<body>
+ <a href='https://www.kayak.co.uk/Qingdao.13023.guide'>city_guides_url</a>
+<a href='https://www.kayak.com.br/Sao-Paulo.10988.guide'>city_guides_url</a>
+<a href='https://www.kayak.com/Dunwoody.7695.guide'>city_guides_url</a>
+<a href='https://www.kayak.com/Buleleng.48647.guide'>city_guides_url</a>
+<a href='https://www.kayak.com.au/Seoul.35982.guide'>city_guides_url</a>
+<a href='https://www.kayak.com/Lahaina.14087.guide'>city_guides_url</a>
+<a href='https://www.kayak.com.au/Seoul.35982.guide'>city_guides_url</a>
+<a href='https://www.kayak.fr/Vichy.7996.guide'>city_guides_url</a>
+<a href='https://www.kayak.es/Lugo.25464.guide'>city_guides_url</a>
+<a href='https://www.kayak.co.uk/Amstelveen.23852.guide'>city_guides_url</a>
+<a href='https://www.kayak.com.br/Recife.32574.guide'>city_guides_url</a>
+<a href='https://www.kayak.de/Munchen.14057.guide'>city_guides_url</a>
+<a href='https://www.kayak.de/Freiburg-im-Breisgau.43452.guide'>city_guides_url</a>
+<a href='https://www.kayak.com.au/Mumbai.31288.guide'>city_guides_url</a>
+<a href='https://www.kayak.com/Saint-Helena.25541.guide'>city_guides_url</a>
+
+</body>
+
+</html>
